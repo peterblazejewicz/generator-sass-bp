@@ -21,4 +21,11 @@ describe('sass-bp:app', function () {
       'stylesheets/base/README.md'
     ]);
   });
+
+  it('creates components stylesheets', function () {
+    assert.file([
+      'stylesheets/components/_buttons.scss',
+      'stylesheets/components/README.md'
+    ]);
+  });
 });

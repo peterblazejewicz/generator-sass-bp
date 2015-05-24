@@ -26,6 +26,7 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: {
+    // stylesheets/base/
     base: function() {
       this.fs.copy(
         this.templatePath('stylesheets/base/_base.scss'),
@@ -46,6 +47,17 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('stylesheets/base/README.md'),
         this.destinationPath('/stylesheets/base/README.md')
+      );
+    },
+    // stylesheets/components/
+    components: function() {
+      this.fs.copy(
+        this.templatePath('stylesheets/components/_buttons.scss'),
+        this.destinationPath('stylesheets/components/_buttons.scss')
+      );
+      this.fs.copy(
+        this.templatePath('stylesheets/components/README.md'),
+        this.destinationPath('stylesheets/components/README.md')
       );
     }
   }
