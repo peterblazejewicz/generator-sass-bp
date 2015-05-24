@@ -10,6 +10,7 @@
   "latedef": true,
   "newcap": true,
   "noarg": true,
+  "mocha": true,
   "quotmark": "single",
   "undef": true,
   "unused": true,
