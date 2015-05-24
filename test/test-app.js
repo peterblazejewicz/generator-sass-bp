@@ -28,4 +28,12 @@ describe('sass-bp:app', function () {
       'stylesheets/components/README.md'
     ]);
   });
+
+  it('creates layout stylesheets', function () {
+    assert.file([
+      'stylesheets/layout/_footer.scss',
+      'stylesheets/layout/_header.scss',
+      'stylesheets/layout/README.md'
+    ]);
+  });
 });

@@ -59,6 +59,13 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('stylesheets/components/README.md'),
         this.destinationPath('stylesheets/components/README.md')
       );
+    },
+    // stylesheets/layout/
+    layout: function() {
+      this.fs.copy(
+        this.templatePath('stylesheets/layout/**/*'),
+        this.destinationPath('stylesheets/layout/')
+      );
     }
   }
 
