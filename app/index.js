@@ -29,35 +29,15 @@ module.exports = yeoman.generators.Base.extend({
     // stylesheets/base/
     base: function() {
       this.fs.copy(
-        this.templatePath('stylesheets/base/_base.scss'),
-        this.destinationPath('stylesheets/base/_base.scss')
-      );
-      this.fs.copy(
-        this.templatePath('stylesheets/base/_fonts.scss'),
-        this.destinationPath('stylesheets/base/_fonts.scss')
-      );
-      this.fs.copy(
-        this.templatePath('stylesheets/base/_helpers.scss'),
-        this.destinationPath('stylesheets/base/_helpers.scss')
-      );
-      this.fs.copy(
-        this.templatePath('stylesheets/base/_typography.scss'),
-        this.destinationPath('stylesheets/base/_typography.scss')
-      );
-      this.fs.copy(
-        this.templatePath('stylesheets/base/README.md'),
-        this.destinationPath('stylesheets/base/README.md')
+        this.templatePath('stylesheets/base/**/*'),
+        this.destinationPath('stylesheets/base/')
       );
     },
     // stylesheets/components/
     components: function() {
       this.fs.copy(
-        this.templatePath('stylesheets/components/_buttons.scss'),
-        this.destinationPath('stylesheets/components/_buttons.scss')
-      );
-      this.fs.copy(
-        this.templatePath('stylesheets/components/README.md'),
-        this.destinationPath('stylesheets/components/README.md')
+        this.templatePath('stylesheets/components/**/*'),
+        this.destinationPath('stylesheets/components/')
       );
     },
     // stylesheets/layout/
