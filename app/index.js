@@ -30,23 +30,23 @@ module.exports = yeoman.generators.Base.extend({
     base: function() {
       this.fs.copy(
         this.templatePath('stylesheets/base/_base.scss'),
-        this.destinationPath('/stylesheets/base/_base.scss')
+        this.destinationPath('stylesheets/base/_base.scss')
       );
       this.fs.copy(
         this.templatePath('stylesheets/base/_fonts.scss'),
-        this.destinationPath('/stylesheets/base/_fonts.scss')
+        this.destinationPath('stylesheets/base/_fonts.scss')
       );
       this.fs.copy(
         this.templatePath('stylesheets/base/_helpers.scss'),
-        this.destinationPath('/stylesheets/base/_helpers.scss')
+        this.destinationPath('stylesheets/base/_helpers.scss')
       );
       this.fs.copy(
         this.templatePath('stylesheets/base/_typography.scss'),
-        this.destinationPath('/stylesheets/base/_typography.scss')
+        this.destinationPath('stylesheets/base/_typography.scss')
       );
       this.fs.copy(
         this.templatePath('stylesheets/base/README.md'),
-        this.destinationPath('/stylesheets/base/README.md')
+        this.destinationPath('stylesheets/base/README.md')
       );
     },
     // stylesheets/components/
