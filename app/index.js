@@ -46,6 +46,45 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('stylesheets/layout/**/*'),
         this.destinationPath('stylesheets/layout/')
       );
+    },
+    // stylesheets/pages
+    pages: function() {
+      this.fs.copy(
+        this.templatePath('stylesheets/pages/**/*'),
+        this.destinationPath('stylesheets/pages/')
+      );
+    },
+    // stylesheets/themes
+    themes: function() {
+      this.fs.copy(
+        this.templatePath('stylesheets/themes/**/*'),
+        this.destinationPath('stylesheets/themes/')
+      );
+    },
+    // stylesheets/utils
+    utils: function() {
+      this.fs.copy(
+        this.templatePath('stylesheets/utils/**/*'),
+        this.destinationPath('stylesheets/utils/')
+      );
+    },
+    // stylesheets/vendor
+    vendor: function() {
+      this.fs.copy(
+        this.templatePath('stylesheets/vendor/**/*'),
+        this.destinationPath('stylesheets/vendor/')
+      );
+    },
+    // stylesheets/
+    main: function() {
+      this.fs.copy(
+        this.templatePath('stylesheets/main.scss'),
+        this.destinationPath('stylesheets/main.scss')
+      );
+      this.fs.copy(
+        this.templatePath('stylesheets/README.md'),
+        this.destinationPath('stylesheets/README.md')
+      );
     }
   }
 
