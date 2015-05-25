@@ -4,22 +4,32 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 
 module.exports = yeoman.generators.Base.extend({
+
+  constructor: function() {
+    yeoman.generators.Base.apply(this, arguments);
+    this.option('skip-welcome-message', {
+      desc: 'Skip welcome message',
+      type: Boolean,
+      defaults: false
+    });
+    this.skipWelcome = this.options['skip-welcome-message'];
+  },
+
   prompting: function() {
     var done = this.async();
 
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the superior ' + chalk.red('Sass Boilerplate') + ' generator!'
-    ));
+    if (!this.skipWelcome) {
+      this.log(yosay(
+        'Welcome to the superior ' + chalk.red('Sass Boilerplate') + ' generator!'
+      ));
+    }
 
-    var prompts = [{
+    this.prompt({
       type: 'confirm',
       name: 'generateAll',
       message: 'Would you like to generate Sass Boilerplate stylesheets?',
       default: true
-    }];
-
-    this.prompt(prompts, function(props) {
+    }, function(props) {
       this.props = props;
       done();
     }.bind(this));
@@ -28,63 +38,85 @@ module.exports = yeoman.generators.Base.extend({
   writing: {
     // stylesheets/base/
     base: function() {
-      this.fs.copy(
-        this.templatePath('stylesheets/base/**/*'),
-        this.destinationPath('stylesheets/base/')
-      );
+      if (this.props.generateAll) {
+        this.fs.copy(
+          this.templatePath('stylesheets/base/**/*'),
+          this.destinationPath('stylesheets/base/')
+        );
+      }
     },
     // stylesheets/components/
     components: function() {
-      this.fs.copy(
-        this.templatePath('stylesheets/components/**/*'),
-        this.destinationPath('stylesheets/components/')
-      );
+      if (this.props.generateAll) {
+        this.fs.copy(
+          this.templatePath('stylesheets/components/**/*'),
+          this.destinationPath('stylesheets/components/')
+        );
+      }
     },
     // stylesheets/layout/
     layout: function() {
-      this.fs.copy(
-        this.templatePath('stylesheets/layout/**/*'),
-        this.destinationPath('stylesheets/layout/')
-      );
+      if (this.props.generateAll) {
+        this.fs.copy(
+          this.templatePath('stylesheets/layout/**/*'),
+          this.destinationPath('stylesheets/layout/')
+        );
+      }
     },
     // stylesheets/pages
     pages: function() {
-      this.fs.copy(
-        this.templatePath('stylesheets/pages/**/*'),
-        this.destinationPath('stylesheets/pages/')
-      );
+      if (this.props.generateAll) {
+        this.fs.copy(
+          this.templatePath('stylesheets/pages/**/*'),
+          this.destinationPath('stylesheets/pages/')
+        );
+      }
     },
     // stylesheets/themes
     themes: function() {
-      this.fs.copy(
-        this.templatePath('stylesheets/themes/**/*'),
-        this.destinationPath('stylesheets/themes/')
-      );
+      if (this.props.generateAll) {
+        this.fs.copy(
+          this.templatePath('stylesheets/themes/**/*'),
+          this.destinationPath('stylesheets/themes/')
+        );
+      }
     },
     // stylesheets/utils
     utils: function() {
-      this.fs.copy(
-        this.templatePath('stylesheets/utils/**/*'),
-        this.destinationPath('stylesheets/utils/')
-      );
+      if (this.props.generateAll) {
+        this.fs.copy(
+          this.templatePath('stylesheets/utils/**/*'),
+          this.destinationPath('stylesheets/utils/')
+        );
+      }
     },
     // stylesheets/vendor
     vendor: function() {
-      this.fs.copy(
-        this.templatePath('stylesheets/vendor/**/*'),
-        this.destinationPath('stylesheets/vendor/')
-      );
+      if (this.props.generateAll) {
+        this.fs.copy(
+          this.templatePath('stylesheets/vendor/**/*'),
+          this.destinationPath('stylesheets/vendor/')
+        );
+      }
     },
     // stylesheets/
     main: function() {
-      this.fs.copy(
-        this.templatePath('stylesheets/main.scss'),
-        this.destinationPath('stylesheets/main.scss')
-      );
-      this.fs.copy(
-        this.templatePath('stylesheets/README.md'),
-        this.destinationPath('stylesheets/README.md')
-      );
+      if (this.props.generateAll) {
+        this.fs.copy(
+          this.templatePath('stylesheets/main.scss'),
+          this.destinationPath('stylesheets/main.scss')
+        );
+        this.fs.copy(
+          this.templatePath('stylesheets/README.md'),
+          this.destinationPath('stylesheets/README.md')
+        );
+      }
+    }
+  },
+
+  end: function() {
+    if (this.props.generateAll && !this.skipWelcome) {
+      this.log(chalk.yellow('All done!'));
     }
   }
 
